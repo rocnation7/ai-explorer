@@ -250,12 +250,13 @@ const roleData: Record<string, {
   },
 }
 
-export default function RoleDetailPage({
+export default async function RoleDetailPage({
   params,
 }: {
-  params: { role: string }
+  params: Promise<{ role: string }>
 }) {
-  const role = roleData[params.role]
+  const { role: roleSlug } = await params
+  const role = roleData[roleSlug]
 
   if (!role) {
     notFound()

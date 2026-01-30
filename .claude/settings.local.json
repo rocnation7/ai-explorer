@@ -12,7 +12,10 @@
       "Bash(dir:*)",
       "Bash(npm install:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix Next.js 15 compatibility and build issues\n\n- Update dynamic route params to async \\(Next.js 15 requirement\\)\n- Add TypeScript types for canvas-confetti\n- Disable unescaped-entities ESLint rule for content-heavy pages\n- Update Next.js to 15.5.11\n\nBuild now succeeds with all features working.\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)"
     ]
   }
 }

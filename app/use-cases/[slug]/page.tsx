@@ -230,12 +230,13 @@ const useCaseData: Record<string, {
   }
 }
 
-export default function UseCasePage({
+export default async function UseCasePage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
-  const useCase = useCaseData[params.slug]
+  const { slug } = await params
+  const useCase = useCaseData[slug]
 
   if (!useCase) {
     return (
