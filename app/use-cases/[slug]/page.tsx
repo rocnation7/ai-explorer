@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2, AlertTriangle, Lightbulb, Shield } from "lucide-react"
 import Link from "next/link"
+import { getSimulatorScenarioId } from "@/lib/use-case-simulator-mapping"
 
 // This would come from a CMS or MDX files in production
 const useCaseData: Record<string, {
@@ -2252,13 +2253,17 @@ export default async function UseCasePage({
             Experience this AI-enabled workflow step-by-step in a safe, interactive environment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg">
-              Launch Simulator
-              <ArrowRight className="w-5 h-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#1a1f36]">
-              View More Use Cases
-            </Button>
+            <Link href={`/simulator?scenario=${getSimulatorScenarioId(slug) || slug}`}>
+              <Button variant="primary" size="lg">
+                Launch Simulator
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
+            <Link href="/use-cases">
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#1a1f36]">
+                View More Use Cases
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -44,8 +44,12 @@ const stageIcons = {
   CheckCircle2,
 }
 
-export function WorkflowSimulator() {
-  const [selectedScenario, setSelectedScenario] = useState<string | null>(null)
+interface WorkflowSimulatorProps {
+  initialScenario?: string | null
+}
+
+export function WorkflowSimulator({ initialScenario = null }: WorkflowSimulatorProps) {
+  const [selectedScenario, setSelectedScenario] = useState<string | null>(initialScenario)
   const [currentStage, setCurrentStage] = useState(0)
   const [showOutput, setShowOutput] = useState(false)
   const [generating, setGenerating] = useState(false)
@@ -57,6 +61,13 @@ export function WorkflowSimulator() {
   useEffect(() => {
     setProgress(initializeProgress())
   }, [])
+
+  // Handle initial scenario from URL parameter
+  useEffect(() => {
+    if (initialScenario && simulatorScenarios.some(s => s.id === initialScenario)) {
+      setSelectedScenario(initialScenario)
+    }
+  }, [initialScenario])
 
   const scenario = simulatorScenarios.find((s) => s.id === selectedScenario)
   const currentStageData = scenario?.stages[currentStage]
