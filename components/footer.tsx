@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { Linkedin, Twitter } from "lucide-react"
+import Image from "next/image"
+import { Linkedin, Youtube, Globe } from "lucide-react"
 
 export function Footer() {
   return (
@@ -8,34 +9,20 @@ export function Footer() {
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-[#b8945f] rounded-sm flex items-center justify-center">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 3L4 7v10l8 4 8-4V7l-8-4z"
-                    stroke="#1a1f36"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 12l8-4M12 12v9M12 12L4 8"
-                    stroke="#1a1f36"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-              <span className="font-serif text-xl">AI in Practice</span>
+            <div className="mb-6">
+              <Image
+                src="/assets/LazardLogoBlack.svg"
+                alt="Lazard Asset Management"
+                width={160}
+                height={48}
+                className="h-auto brightness-0 invert opacity-90"
+              />
             </div>
+            <p className="text-[11px] font-medium text-[#b8945f] tracking-wide uppercase mb-3">
+              AI in Practice
+            </p>
             <p className="text-white/60 text-sm leading-relaxed">
-              Practical AI guidance for wealth management professionals.
+              Practical AI guidance for wealth and asset management professionals.
             </p>
           </div>
 
@@ -120,28 +107,37 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-white/50 text-sm">
             © 2026 Lazard Asset Management. All rights reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/lazard-asset-management/posts/?feedView=all"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors"
+              className="w-10 h-10 bg-white/5 hover:bg-[#b8945f]/20 border border-white/10 hover:border-[#b8945f]/30 rounded-sm flex items-center justify-center transition-all duration-300 group"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-4 h-4" />
+              <Linkedin className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://www.youtube.com/c/LazardAssetManagement"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors"
-              aria-label="Twitter"
+              className="w-10 h-10 bg-white/5 hover:bg-[#b8945f]/20 border border-white/10 hover:border-[#b8945f]/30 rounded-sm flex items-center justify-center transition-all duration-300 group"
+              aria-label="YouTube"
             >
-              <Twitter className="w-4 h-4" />
+              <Youtube className="w-4 h-4 group-hover:scale-110 transition-transform" />
+            </a>
+            <a
+              href="https://lazardassetmanagement.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/5 hover:bg-[#b8945f]/20 border border-white/10 hover:border-[#b8945f]/30 rounded-sm flex items-center justify-center transition-all duration-300 group"
+              aria-label="Lazard Asset Management Website"
+            >
+              <Globe className="w-4 h-4 group-hover:scale-110 transition-transform" />
             </a>
           </div>
         </div>

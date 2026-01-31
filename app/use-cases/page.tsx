@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ArrowRight, Users, Building2, TrendingUp, Headphones } from "lucide-react"
 
 const useCases = [
+  // Wealth Advisor
   {
     slug: "portfolio-commentary",
     title: "Personalized Portfolio Commentary",
@@ -22,7 +23,180 @@ const useCases = [
     description: "Synthesize client data, recent interactions, and market context into pre-meeting briefings.",
     timeSavings: "60% time savings",
   },
-  // Add more use cases as they're developed
+  {
+    slug: "market-updates",
+    title: "Market Update Personalization",
+    role: "Wealth Advisor",
+    roleIcon: Users,
+    difficulty: "Intermediate",
+    description: "Transform general market commentary into client-specific implications and talking points.",
+    timeSavings: "70% time savings",
+  },
+  {
+    slug: "email-drafting",
+    title: "Email Response Drafting",
+    role: "Wealth Advisor",
+    roleIcon: Users,
+    difficulty: "Basic",
+    description: "Generate professional, on-brand responses to common client inquiries.",
+    timeSavings: "80% time savings",
+  },
+  {
+    slug: "performance-stories",
+    title: "Performance Attribution Stories",
+    role: "Wealth Advisor",
+    roleIcon: Users,
+    difficulty: "Intermediate",
+    description: "Translate complex performance data into clear, narrative explanations.",
+    timeSavings: "75% time savings",
+  },
+  {
+    slug: "tax-loss-communication",
+    title: "Tax-Loss Harvesting Communication",
+    role: "Wealth Advisor",
+    roleIcon: Users,
+    difficulty: "Advanced",
+    description: "Create sophisticated yet accessible explanations of tax strategies executed in portfolios.",
+    timeSavings: "75% time savings",
+  },
+  // RIA Principal
+  {
+    slug: "communication-templates",
+    title: "Firm-Wide Communication Templates",
+    role: "RIA Principal",
+    roleIcon: Building2,
+    difficulty: "Basic",
+    description: "Create consistent, on-brand communication templates that advisors can personalize.",
+    timeSavings: "70% time savings",
+  },
+  {
+    slug: "compliance-review",
+    title: "Compliance Review Assistance",
+    role: "RIA Principal",
+    roleIcon: Building2,
+    difficulty: "Intermediate",
+    description: "Pre-screen advisor communications for compliance red flags before final review.",
+    timeSavings: "50% time savings",
+  },
+  {
+    slug: "advisor-onboarding",
+    title: "Onboarding New Advisors",
+    role: "RIA Principal",
+    roleIcon: Building2,
+    difficulty: "Basic",
+    description: "Accelerate new advisor training with AI-powered knowledge bases and best practice examples.",
+    timeSavings: "50% faster productivity",
+  },
+  {
+    slug: "practice-insights",
+    title: "Practice Management Insights",
+    role: "RIA Principal",
+    roleIcon: Building2,
+    difficulty: "Advanced",
+    description: "Analyze firm-wide communication patterns, advisor productivity, and client engagement data.",
+    timeSavings: "75% time savings",
+  },
+  {
+    slug: "client-segmentation",
+    title: "Client Segmentation Strategies",
+    role: "RIA Principal",
+    roleIcon: Building2,
+    difficulty: "Intermediate",
+    description: "Use AI to identify meaningful client segments and service model opportunities.",
+    timeSavings: "80% time savings",
+  },
+  // CIO / Investment Committee
+  {
+    slug: "research-synthesis",
+    title: "Research Synthesis",
+    role: "CIO / Investment Committee",
+    roleIcon: TrendingUp,
+    difficulty: "Intermediate",
+    description: "Distill lengthy research reports into executive summaries and client-ready insights.",
+    timeSavings: "75% time savings",
+  },
+  {
+    slug: "committee-docs",
+    title: "Investment Committee Documentation",
+    role: "CIO / Investment Committee",
+    roleIcon: TrendingUp,
+    difficulty: "Basic",
+    description: "Generate meeting summaries, decision documentation, and action items efficiently.",
+    timeSavings: "80% time savings",
+  },
+  {
+    slug: "market-commentary",
+    title: "Market Commentary Distribution",
+    role: "CIO / Investment Committee",
+    roleIcon: TrendingUp,
+    difficulty: "Intermediate",
+    description: "Adapt institutional market views for different audience segments.",
+    timeSavings: "65% time savings",
+  },
+  {
+    slug: "positioning-narratives",
+    title: "Portfolio Positioning Narratives",
+    role: "CIO / Investment Committee",
+    roleIcon: TrendingUp,
+    difficulty: "Advanced",
+    description: "Explain complex positioning decisions in clear, compelling language.",
+    timeSavings: "70% time savings",
+  },
+  {
+    slug: "crisis-communication",
+    title: "Crisis Communication",
+    role: "CIO / Investment Committee",
+    roleIcon: TrendingUp,
+    difficulty: "Advanced",
+    description: "Rapidly draft timely, measured responses to market volatility.",
+    timeSavings: "75% time savings",
+  },
+  // Client Service & Operations
+  {
+    slug: "inquiry-responses",
+    title: "Client Inquiry Responses",
+    role: "Client Service & Operations",
+    roleIcon: Headphones,
+    difficulty: "Basic",
+    description: "Draft professional responses to common account and service questions quickly.",
+    timeSavings: "70% time savings",
+  },
+  {
+    slug: "document-prep",
+    title: "Document Preparation",
+    role: "Client Service & Operations",
+    roleIcon: Headphones,
+    difficulty: "Basic",
+    description: "Generate standard forms, letters, and documentation with pre-filled client data.",
+    timeSavings: "80% time savings",
+  },
+  {
+    slug: "onboarding-communication",
+    title: "Onboarding Communication",
+    role: "Client Service & Operations",
+    roleIcon: Headphones,
+    difficulty: "Intermediate",
+    description: "Create personalized welcome sequences and onboarding materials for new clients.",
+    timeSavings: "75% time savings",
+  },
+  {
+    slug: "issue-resolution",
+    title: "Service Issue Resolution",
+    role: "Client Service & Operations",
+    roleIcon: Headphones,
+    difficulty: "Intermediate",
+    description: "Draft empathetic, solution-focused responses to service concerns.",
+    timeSavings: "70% time savings",
+  },
+  {
+    slug: "knowledge-base",
+    title: "Knowledge Base Management",
+    role: "Client Service & Operations",
+    roleIcon: Headphones,
+    difficulty: "Advanced",
+    description: "Maintain and query internal knowledge bases for faster issue resolution.",
+    timeSavings: "90% time savings",
+  },
 ]
 
 export default function UseCasesPage() {
@@ -94,18 +268,6 @@ export default function UseCasesPage() {
               )
             })}
 
-            {/* Coming Soon Card */}
-            <div className="bg-gradient-to-br from-[#f8f7f2] to-white border-2 border-dashed border-[#e5e5dc] rounded-lg p-6 flex items-center justify-center text-center">
-              <div>
-                <div className="text-4xl mb-2">✨</div>
-                <h3 className="font-semibold text-[#1a1f36] mb-2">
-                  More Coming Soon
-                </h3>
-                <p className="text-sm text-[#6a6a6a]">
-                  We're adding new use cases every week
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -1,9 +1,10 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Users, Building2, TrendingUp, Headphones, Clock, Target, Shield } from "lucide-react"
+import { ArrowRight, Users, Building2, TrendingUp, Headphones, Sparkles, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { toolWorkflowsByRole } from "@/lib/tool-workflows"
 
 const roleData: Record<string, {
   title: string
@@ -282,10 +283,12 @@ export default async function RoleDetailPage({
               <p className="text-xl text-[#4a4a4a] leading-relaxed mb-8">
                 {role.description}
               </p>
-              <Button variant="primary" size="lg">
-                Try the Simulator
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <Link href="/simulator">
+                <Button variant="primary" size="lg">
+                  Try the Simulator
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </Link>
             </div>
 
             {/* Stats */}
@@ -333,15 +336,18 @@ export default async function RoleDetailPage({
         </div>
       </section>
 
-      {/* Use Cases */}
+      {/* Use Cases - Chat Based */}
       <section className="py-20 bg-gradient-to-br from-[#f8f7f2] via-white to-[#f5f5f0]">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 mb-4">
+              <span className="text-sm font-medium text-blue-900">Chat & Prompt-Based Workflows</span>
+            </div>
             <h2 className="font-serif text-4xl text-[#1a1f36] mb-4">
-              Use Cases
+              Conversational AI Use Cases
             </h2>
             <p className="text-lg text-[#4a4a4a]">
-              Practical workflows from basic to advanced
+              Using AI chat interfaces to transform your daily workflows
             </p>
           </div>
 
@@ -376,6 +382,117 @@ export default async function RoleDetailPage({
         </div>
       </section>
 
+      {/* Tool-Based Workflows */}
+      <section className="py-20 bg-white border-y border-[#e5e5dc]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-lg px-4 py-2 mb-4">
+              <Sparkles className="w-4 h-4 text-purple-700" />
+              <span className="text-sm font-medium text-purple-900">World-Class AI Tools</span>
+            </div>
+            <h2 className="font-serif text-4xl text-[#1a1f36] mb-4">
+              Tool-Based Workflows
+            </h2>
+            <p className="text-lg text-[#4a4a4a] mb-4">
+              Go beyond chat with specialized AI tools built for specific tasks
+            </p>
+            <Link href="/ai-tools" className="text-[#b8945f] hover:underline inline-flex items-center gap-1">
+              Explore all AI tools
+              <ExternalLink className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="space-y-6">
+            {toolWorkflowsByRole[roleSlug]?.map((workflow, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-white to-[#f8f7f2] border border-[#e5e5dc] rounded-xl p-8 hover:shadow-lg transition-all"
+              >
+                <div className="grid lg:grid-cols-3 gap-8">
+                  {/* Left Column - Tool & Overview */}
+                  <div className="lg:col-span-1">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-800 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Sparkles className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className="text-xs text-purple-700 font-medium uppercase tracking-wider">
+                          {workflow.toolCategory}
+                        </div>
+                        <div className="font-semibold text-[#1a1f36]">
+                          {workflow.tool}
+                        </div>
+                      </div>
+                    </div>
+                    <span className={`inline-block text-xs font-medium px-3 py-1 rounded-full mb-4 ${
+                      workflow.difficulty === "Basic"
+                        ? "bg-green-100 text-green-700"
+                        : workflow.difficulty === "Intermediate"
+                        ? "bg-yellow-100 text-yellow-700"
+                        : "bg-orange-100 text-orange-700"
+                    }`}>
+                      {workflow.difficulty}
+                    </span>
+                    <h3 className="font-serif text-xl text-[#1a1f36] mb-3">
+                      {workflow.title}
+                    </h3>
+                    <p className="text-sm text-[#4a4a4a] leading-relaxed">
+                      {workflow.description}
+                    </p>
+                  </div>
+
+                  {/* Middle Column - Workflow */}
+                  <div className="lg:col-span-1 border-l-0 lg:border-l border-[#e5e5dc] lg:pl-8">
+                    <div className="text-xs text-[#6a6a6a] uppercase tracking-wider mb-3 font-medium">
+                      Workflow
+                    </div>
+                    <div className="space-y-2">
+                      {workflow.workflow.split(' → ').map((step, stepIndex) => (
+                        <div key={stepIndex} className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-[#b8945f] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <span className="text-white text-xs font-medium">{stepIndex + 1}</span>
+                          </div>
+                          <p className="text-sm text-[#1a1f36] leading-relaxed">{step}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right Column - Value */}
+                  <div className="lg:col-span-1 border-l-0 lg:border-l border-[#e5e5dc] lg:pl-8">
+                    <div className="text-xs text-[#6a6a6a] uppercase tracking-wider mb-3 font-medium">
+                      The Value
+                    </div>
+                    <div className="bg-gradient-to-br from-[#1a1f36] to-[#2a3f5f] text-white rounded-lg p-6">
+                      <p className="text-sm leading-relaxed">
+                        {workflow.value}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Learn More CTA */}
+          <div className="mt-12 text-center bg-gradient-to-br from-purple-50 to-white border border-purple-100 rounded-xl p-8">
+            <h3 className="font-serif text-2xl text-[#1a1f36] mb-3">
+              Want to Learn More About These Tools?
+            </h3>
+            <p className="text-[#4a4a4a] mb-6">
+              Explore our comprehensive guide to world-class AI tools, complete with use cases,
+              compliance considerations, and implementation guidance.
+            </p>
+            <Link href="/ai-tools">
+              <Button variant="primary" size="lg">
+                Explore AI Tools Guide
+                <ExternalLink className="w-5 h-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 lg:px-12 text-center">
@@ -386,12 +503,16 @@ export default async function RoleDetailPage({
             Try our interactive simulator to see these use cases in action.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="primary" size="lg">
-              Launch Simulator
-            </Button>
-            <Button variant="outline" size="lg">
-              Talk to Our Team
-            </Button>
+            <Link href="/simulator">
+              <Button variant="primary" size="lg">
+                Launch Simulator
+              </Button>
+            </Link>
+            <Link href="mailto:ai-practice@lazard.com">
+              <Button variant="outline" size="lg">
+                Talk to Our Team
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
