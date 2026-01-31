@@ -2,7 +2,14 @@ import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { WorkflowSimulator } from "@/components/workflow-simulator"
 
-export default function SimulatorPage() {
+interface SimulatorPageProps {
+  searchParams: Promise<{ scenario?: string }>
+}
+
+export default async function SimulatorPage({ searchParams }: SimulatorPageProps) {
+  const params = await searchParams
+  const initialScenario = params.scenario || null
+
   return (
     <main className="min-h-screen bg-white">
       <Navigation />
@@ -22,7 +29,7 @@ export default function SimulatorPage() {
 
       <div className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6 lg:px-12">
-          <WorkflowSimulator />
+          <WorkflowSimulator initialScenario={initialScenario} />
         </div>
       </div>
 
