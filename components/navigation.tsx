@@ -79,9 +79,11 @@ export function Navigation() {
             </Link>
           </div>
 
-          <Button variant="primary" size="default">
-            Talk to Us
-          </Button>
+          <Link href="/talk-to-us">
+            <Button variant="primary" size="default">
+              Talk to Us
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
